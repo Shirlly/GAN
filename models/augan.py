@@ -13,7 +13,7 @@ from tensorgraph.utils import valid, same
 class AuGan(object):
 
     def __init__(self, h, w, c, nclass, bottleneck_dim):
-        self.h = w
+        self.h = h
         self.w = w
         self.c = c
         self.nclass = nclass
@@ -117,7 +117,8 @@ class AuGan(object):
                 print('==============')
                 class_hn = tg.HiddenNode(prev=[disc_hn],
                                          layers=[Linear(self.nclass, self.nclass),
-                                                 Softmax()])
+                                                 #　Softmax()
+                                                 ])
 
                 judge_hn = tg.HiddenNode(prev=[disc_hn],
                                          layers=[Linear(self.nclass, 1),
@@ -186,12 +187,12 @@ class AuGan(object):
 
                 class_hn = tg.HiddenNode(prev=[disc_hn],
                                          layers=[Linear(self.bottleneck_dim, self.nclass),
-                                                #  Softmax()
+                                                 Softmax()
                                                  ])
 
                 judge_hn = tg.HiddenNode(prev=[disc_hn],
                                          layers=[Linear(self.bottleneck_dim, 1),
-                                                #  Sigmoid()
+                                                 Sigmoid()
                                                  ])
 
                 real_class_en = tg.EndNode(prev=[class_hn])
