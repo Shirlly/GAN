@@ -9,3 +9,9 @@ python main.py --train --modelclass AuGan
 ```
 
 We add the generated images to the original data to see whether there is improvement for data classification.
+
+
+## Required packages:
+* Python 2.7
+* Tensorgraph (https://pypi.python.org/pypi/tensorgraph)
+* Tensorflow 1.0
